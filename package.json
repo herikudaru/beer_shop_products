@@ -1,0 +1,22 @@
+{
+  "name": "beer_shop_products",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/herikudaru/beer_shop_products.git"
+  },
+  "author": "",
+  "dependencies": {
+    "uuid": "^2.0.3"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/herikudaru/beer_shop_products/issues"
+  },
+  "homepage": "https://github.com/herikudaru/beer_shop_products#readme"
+}
