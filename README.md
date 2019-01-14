@@ -1,5 +1,20 @@
 # PRODUCTS CATALOG
 
+## Local developmet setup
+
+clone this repository 
+
+```sh
+git clone git@github.com:herikudaru/beer_shop_products.git
+cd beer_shop_products
+```
+
+install dependencies
+
+```sh
+npm install
+```
+
 ## stack n' stuff
 
 - nodejs
