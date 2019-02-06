@@ -2,7 +2,7 @@
 
 ## Local developmet setup
 
-clone this repository 
+clone this repository
 
 ```sh
 git clone git@github.com:herikudaru/beer_shop_products.git
@@ -15,28 +15,92 @@ install dependencies
 npm install
 ```
 
-## stack n' stuff
+## API Spec
 
-- nodejs
-- mysql/mariadb or PostgreSql / dynamoDb
-- aws stuff
+### Get products
 
-## fields
+Method: GET
 
-- product id
-- product name
-- product description
-- (product image)
+#### Request
 
-## functions
+path: /get
 
-- get products list
-- get single product(ID)
-- (add a product)(name, descriptions)
-- (modify product)(id, name, descriptions)
-  - id unchangable
+#### Response
 
-## notes
+Status code: 200, 404
 
-- (Probably id has the unguessable?) <- if time
-- (Image can be blob or link)
+Payload:
+
+```json
+[
+    {
+        "id": 42312,
+        "name": "Fancy beer",
+        "description": "IPA, 4.2%",
+        "image": "example.com/0.png"
+    },
+
+    {
+        "id": 165341124,
+        "name": "Cool beer",
+        "description": "Lager, 5%",
+        "image": "example.com/1.png"
+    },
+]
+```
+
+### Get single product
+
+Method: GET
+
+#### Request
+
+path: /get/{id}
+
+#### Response
+
+Status code: 200, 404
+
+Payload:
+
+```json
+{
+    "id": 165341124,
+    "name": "Fancy beer",
+    "description": "IPA, 4.2%",
+    "image": "example.com/0.png"
+}
+```
+
+### Create a sigle product
+
+Method: POST
+
+#### Request
+
+path: /create
+
+payload:
+
+```json
+{
+    "name": "New beer",
+    "description": "Ale, 3.1%",
+    "image": "example.com/12.png"
+}
+```
+
+#### Response
+
+Status code: 201, 400
+
+payload:
+
+```json
+{
+    "id": 6557498272,
+    "name": "New beer",
+    "description": "Ale, 3.1%",
+    "image": "example.com/12.png"
+}
+```
