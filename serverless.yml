@@ -6,8 +6,8 @@ provider:
     region: eu-north-1
 
 functions:
-  hello:
-    handler: products/get.hello
+  get:
+    handler: products/get.get
     events:
       - http:
           path: products
