@@ -8,11 +8,11 @@ module.exports.create = (event, context, callback) => {
   var docClient = new AWS.DynamoDB.DocumentClient();
 
   const data = JSON.parse(event.body);
-
+  const id = uuid.v4();
   var params = {
     TableName: "Products",
     Item: {
-      "id": uuid.v4(),
+      "id": id,
       "name": data.name,
       "description": data.description,
       "image": data.image,
@@ -25,7 +25,7 @@ module.exports.create = (event, context, callback) => {
     } else {
       const response = {
         statusCode: 201,
-        body: null,
+        body: JSON.stringify({"id":id}),
       };
       callback(null, response);
     }
