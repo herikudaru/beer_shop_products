@@ -8,7 +8,7 @@ provider:
       - Effect: Allow
         Action:
           - dynamodb:Scan
-          - dynamodb:Put
+          - dynamodb:PutItem
         Resource: "arn:aws:dynamodb:eu-north-1:*"
 functions:
   get:
