@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports.get = (event, context, callback) => {
 
   var AWS = require("aws-sdk");
@@ -13,6 +11,7 @@ module.exports.get = (event, context, callback) => {
   docClient.scan(params, onScan);
   
   function onScan(err, data) {
+    'use strict';
       if (err) {
           callback(JSON.stringify(err, null, 2));
       } else {

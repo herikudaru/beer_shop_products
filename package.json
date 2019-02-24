@@ -7,7 +7,7 @@
     "jshint": "^2.6.0"
   },
   "scripts": {
-    "test": "jshint products/get.js"
+    "test": "jshint products/"
   },
   "repository": {
     "type": "git",
