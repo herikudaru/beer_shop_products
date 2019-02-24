@@ -8,6 +8,7 @@ provider:
       - Effect: Allow
         Action:
           - dynamodb:Scan
+          - dynamodb:Put
         Resource: "arn:aws:dynamodb:eu-north-1:*"
 functions:
   get:
@@ -16,4 +17,11 @@ functions:
       - http:
           path: products
           method: get
+          cors: true
+  create:
+    handler: products/create.create
+    events:
+      - http:
+          path: products
+          method: post
           cors: true
