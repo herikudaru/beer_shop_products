@@ -13,6 +13,7 @@
   "author": "",
   "dependencies": {
     "aws-sdk": "^2.397.0",
+    "jshint": "^2.10.1",
     "uuid": "^2.0.3"
   },
   "license": "ISC",
