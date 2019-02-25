@@ -23,7 +23,7 @@ module.exports.get = (event, context, callback) => {
         }
         const response = {
           statusCode: statusState,
-          body: statusState == 200 ? JSON.stringify(data) : null,
+          body: statusState == 200 ? JSON.stringify(data.Item) : null,
         };
         callback(null, response);
       }
