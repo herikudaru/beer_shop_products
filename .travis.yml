@@ -1,0 +1,35 @@
+language: node_js
+esversion: 
+  - "6"
+node_js: 
+  - "8"
+
+install:
+  - npm install aws-sdk
+  - npm install -g serverless
+  - npm install mocha -g
+
+before_script:
+  - export AWS_ACCESS_KEY_ID=$TEST_AWS_ACCESS_KEY_ID
+  - export AWS_SECRET_ACCESS_KEY=$TEST_AWS_SECRET_ACCESS_KEY
+
+branches:
+  except:
+  - test
+
+  only:
+  - master
+
+script:
+  - sls deploy
+  - mocha ./test/test_get.js
+
+before_deploy:
+  - export AWS_ACCESS_KEY_ID=$PROD_AWS_ACCESS_KEY_ID
+  - export AWS_SECRET_ACCESS_KEY=$PROD_AWS_SECRET_ACCESS_KEY
+
+deploy:
+  provider: script  
+  script: deploy.sh
+  on:
+    branch: master
