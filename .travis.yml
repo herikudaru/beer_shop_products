@@ -20,10 +20,10 @@ before_deploy:
 jobs:
   include:
     - stage: test deploy
-      script: test_deploy.sh
+      script: sh test_deploy.sh
     - stage: test the unit
-      script: test_scripts.sh
+      script: sh test_scripts.sh
     - stage: deploy
       if: branch = master
-      script: deploy.sh
+      script: sh deploy.sh
 
