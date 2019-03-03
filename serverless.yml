@@ -11,6 +11,7 @@ provider:
           - dynamodb:PutItem
           - dynamodb:GetItem
           - dynamodb:UpdateItem
+          - dynamodb:DeleteItem
         Resource: "arn:aws:dynamodb:eu-north-1:*"
 functions:
   get:
@@ -33,4 +34,11 @@ functions:
       - http:
           path: products
           method: put
+          cors: true
+  delete:
+    handler: products/delete.delete
+    events:
+      - http:
+          path: products
+          method: delete
           cors: true
