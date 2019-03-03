@@ -116,3 +116,60 @@ payload:
     "id": "9e38fd3d-d136-4784-9918-51d9823ba7df"
 }
 ```
+
+### Modify product
+
+Method: PUT
+
+#### Request
+
+path: /products
+
+Header: 
+
+    product_id: "10ba038e-48da-487b-96e8-8d3b99b6d18a"
+
+payload:
+
+```json
+{
+    "name": "Modified beer",
+    "description": "Ale, 3.1%",
+    "image": "example.com/12_new_final_final_new.png",
+    "price": 10.99
+}
+```
+
+#### Response
+
+Status code: 200, 502
+
+payload:
+
+```json
+{
+    "id": "10ba038e-48da-487b-96e8-8d3b99b6d18a",
+    "name": "Modified beer",
+    "description": "Ale, 3.1%",
+    "image": "example.com/12_new_final_final_new.png",
+    "price": 10.99
+}
+```
+
+### Delete product
+
+Method: DELETE
+
+#### Request
+
+path: /products
+
+Header: 
+
+    product_id: 10ba038e-48da-487b-96e8-8d3b99b6d18a
+
+#### Response
+
+Status code: 200, 502
+
+Payload: none
