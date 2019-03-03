@@ -28,8 +28,9 @@ before_deploy:
   - export AWS_ACCESS_KEY_ID=$PROD_AWS_ACCESS_KEY_ID
   - export AWS_SECRET_ACCESS_KEY=$PROD_AWS_SECRET_ACCESS_KEY
 
-deploy:
-  provider: script  
-  script: deploy.sh
-  on:
-    branch: master
+jobs:
+  include:
+  - # requirew the branch to be master
+    if: branch = master
+    script:
+      - sls deploy
