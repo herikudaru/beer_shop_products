@@ -1,12 +1,24 @@
+var env = process.env.NODE_ENV || 'dev';
+
 module.exports.get = (event, context, callback) => {
 
   var AWS = require("aws-sdk");
   
-  var docClient = new AWS.DynamoDB.DocumentClient();
-  
-  var params = {
+  if (env = 'dev') {
+    var docClient = new AWS.DynamoDB.DocumentClient({ endpoint: 'http://localhost:8000'});
+  } else {
+    var docClient = new AWS.DynamoDB.DocumentClient();
+  }
+
+  if (env = 'dev') {
+    var params = {
+        TableName: "productsTest",
+    };
+  } else {
+    var params = {
       TableName: "Products",
-  };
+    };
+  }
   
   docClient.scan(params, onScan);
   

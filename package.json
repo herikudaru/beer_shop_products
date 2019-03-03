@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "devDependencies": {
-    "jshint": "^2.6.0"
+    "request": "*"
   },
   "scripts": {
-    "test": "jshint products/"
+    "test": "mocha ./test"
   },
   "repository": {
     "type": "git",
@@ -16,7 +16,16 @@
   "author": "",
   "dependencies": {
     "aws-sdk": "^2.397.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "chai-json": "^1.0.0",
+    "dynamodb-localhost": "^0.0.6",
     "jshint": "^2.10.1",
+    "json": "^9.0.6",
+    "mocha": "^6.0.1",
+    "request": "^2.88.0",
+    "serverless-dynamodb-local": "0.2.35",
+    "should": "^13.2.3",
     "uuid": "^2.0.3"
   },
   "license": "ISC",

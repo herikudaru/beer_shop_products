@@ -17,3 +17,44 @@ functions:
           path: products
           method: get
           cors: true
+
+plugins:
+  - serverless-dynamodb-local
+
+custom:
+  dynamodb:
+  # If you only want to use DynamoDB Local in some stages, declare them here
+    stages:
+      - dev
+    start:
+      port: 8000
+      inMemory: true
+      heapInitial: 200m
+      heapMax: 1g
+      migrate: true
+      seed: true
+      convertEmptyValues: true
+    # Uncomment only if you already have a DynamoDB running locally
+    # noStart: true
+
+    seed:
+      test:
+        sources:
+          - table: productsTest
+            rawsources: [./test/fake-products.json]
+
+resources:
+  Resources:
+    productsTest:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: productsTest
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
