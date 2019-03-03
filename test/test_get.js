@@ -1,18 +1,23 @@
 const https = require('https');
+var chai = require('chai');
+var chaiHTTP = require('chai-http');
 
-https.get('https://6uski1shah.execute-api.eu-north-1.amazonaws.com/dev/products', (resp) => {
-  let data = '';
+const should = chai.should();
+const expect = chai.expect();
 
-  // A chunk of data has been recieved.
-  resp.on('data', (chunk) => {
-    data += chunk;
-  });
+chai.use(chaiHTTP);
 
-  // The whole response has been received. Print out the result.
-  resp.on('end', () => {
-    console.log(JSON.parse(data).explanation);
-  });
+describe('GET routes', () => {
+    describe('index', () => {
 
-}).on("error", (err) => {
-  console.log("Error: " + err.message);
-});
+        it('getting beer, its json', function() {   // <= No done callback
+            chai.request('https://6uski1shah.execute-api.eu-north-1.amazonaws.com/dev/products')
+            .get('')
+            .end(function(err, res) {
+                expect(req).to.be.json; // <= Test completes before this runs
+            });
+        });
+
+    })
+})
+      
