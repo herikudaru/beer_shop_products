@@ -34,7 +34,7 @@ path: /products
 
 #### Response
 
-Status code: 200, 404
+Status code: 200
 
 Payload:
 
@@ -68,7 +68,7 @@ path: /products
 
 Header: 
 
-    product_id: "10ba038e-48da-487b-96e8-8d3b99b6d18a"
+    product_id: 10ba038e-48da-487b-96e8-8d3b99b6d18a
 
 #### Response
 
