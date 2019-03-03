@@ -13,24 +13,17 @@ before_script:
   - export AWS_ACCESS_KEY_ID=$TEST_AWS_ACCESS_KEY_ID
   - export AWS_SECRET_ACCESS_KEY=$TEST_AWS_SECRET_ACCESS_KEY
 
-branches:
-  except:
-  - test
-
-  only:
-  - master
-
-script:
-  - sls deploy
-  - mocha ./test/test_get.js
-
 before_deploy:
   - export AWS_ACCESS_KEY_ID=$PROD_AWS_ACCESS_KEY_ID
   - export AWS_SECRET_ACCESS_KEY=$PROD_AWS_SECRET_ACCESS_KEY
 
 jobs:
   include:
-  - # requirew the branch to be master
-    if: branch = master
-    script:
-      - sls deploy
+    - stage: test deploy
+      script: ./sh_commands/test_deploy.sh
+    - stage: test the unit
+      script: ./sh_commands/test_scripts.sh
+    - stage: deploy
+      if: branch = master
+      script: ./sh_commands/deploy.sh
+
