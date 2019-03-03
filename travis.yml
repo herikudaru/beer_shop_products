@@ -13,6 +13,9 @@ before_script:
   - export AWS_SECRET_ACCESS_KEY = $TEST_AWS_SECRET_ACCESS_KEY
 
 branches:
+  except:
+  - test
+
   only:
   - master
 
