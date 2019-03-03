@@ -21,7 +21,7 @@ branches:
 
 script:
   - sls deploy
-  - node test/test_get.js
+  - node ./test/test_get.js
 
 before_deploy:
   - export AWS_ACCESS_KEY_ID=$PROD_AWS_ACCESS_KEY_ID
