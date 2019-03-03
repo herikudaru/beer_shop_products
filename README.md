@@ -158,7 +158,7 @@ payload:
 
 ### Delete product
 
-Method: DELTE
+Method: DELETE
 
 #### Request
 
