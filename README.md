@@ -86,7 +86,7 @@ Payload:
 }
 ```
 
-### Create a sigle product
+### Create a single product
 
 Method: POST
 
