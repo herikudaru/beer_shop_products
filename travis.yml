@@ -4,26 +4,18 @@ esversion:
 node_js: 
   - "8"
 
-install:
-  - npm install aws-sdk
-  - npm install -g serverless
+cache:
+  directories:
+    - node_modules
 
-before_script:
-  - export AWS_ACCESS_KEY_ID = $TEST_AWS_ACCESS_KEY_ID
-  - export AWS_SECRET_ACCESS_KEY = $TEST_AWS_SECRET_ACCESS_KEY
-
+# blocklist
 branches:
   except:
   - test
 
+  #whitelist
   only:
   - master
-
-script: deploy.sh
-
-before_deploy:
-  - export AWS_ACCESS_KEY_ID = $PROD_AWS_ACCESS_KEY_ID
-  - export AWS_SECRET_ACCESS_KEY = $PROD_AWS_SECRET_ACCESS_KEY
 
 deploy:
   provider: script  
