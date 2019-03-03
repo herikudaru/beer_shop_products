@@ -16,7 +16,6 @@
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
     "mocha": "^6.0.2",
-    "require": "^2.4.20",
     "uuid": "^2.0.3"
   },
   "license": "ISC",
