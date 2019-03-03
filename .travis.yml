@@ -15,7 +15,7 @@ jobs:
       script: sh test_deploy.sh
     - stage: test the unit
       script: sh test_scripts.sh
-    - stage: deploy
-      if: branch = master
-      script: sh deploy.sh
 
+deploy:
+  provider: script
+  script: sh deploy.sh
