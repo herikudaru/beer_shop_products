@@ -2,6 +2,13 @@
 
 module.exports.modify = (event, context, callback) => {
 
+  const sharedSecretKey = process.env.SHARED_SECRET_KEY || "";
+  const clientKey = event.headers.SHARED_SECRET_KEY || "";
+  if (sharedSecretKey == "")
+    callback('error');
+  if (clientKey == "" || clientKey != sharedSecretKey)
+    callback(null, {statusCode:401, body:JSON.stringify({"message":"unauthorized"})})
+
   var AWS = require("aws-sdk");
 
   var docClient = new AWS.DynamoDB.DocumentClient({ convertEmptyValues: true });
