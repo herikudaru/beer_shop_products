@@ -10,7 +10,7 @@ describe('GET routes', () => {
     describe('index', () => {
 
         it('getting beer, its json', function(done) {   // <= No done callback
-            chai.request('https://6uski1shah.execute-api.eu-north-1.amazonaws.com/dev/products')
+            chai.request(process.env.TEST_API_ENDPOINT)
             .get('')
             .end(function(err, req) {
                 expect(req).to.be.json;
