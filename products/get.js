@@ -4,10 +4,14 @@ module.exports.get = (event, context, callback) => {
 
   const sharedSecretKey = process.env.SHARED_SECRET_KEY || "";
   const clientKey = event.headers.shared_secret_key || "";
-  if (sharedSecretKey == "")
+  if (sharedSecretKey == "") {
     callback('error');
-  if (clientKey == "" || clientKey != sharedSecretKey)
+    return;
+  }
+  if (clientKey == "" || clientKey != sharedSecretKey) {
     callback(null, {statusCode:401, body:JSON.stringify({"message":"unauthorized"})});
+    return;
+  }
 
   var AWS = require("aws-sdk");
 
