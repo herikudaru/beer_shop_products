@@ -24,6 +24,8 @@ npm install
 
 ## API Spec
 
+**You will need a key, message us to recieve it**
+
 ### Get products
 
 Method: GET
@@ -31,6 +33,11 @@ Method: GET
 #### Request
 
 path: /products
+
+Header: 
+
+    shared_secret_key: <KEY>
+
 
 #### Response
 
@@ -69,6 +76,7 @@ path: /products
 Header: 
 
     product_id: 10ba038e-48da-487b-96e8-8d3b99b6d18a
+    shared_secret_key: <KEY>
 
 #### Response
 
@@ -93,6 +101,10 @@ Method: POST
 #### Request
 
 path: /products
+
+Header: 
+
+    shared_secret_key: <KEY>
 
 payload:
 
@@ -127,7 +139,8 @@ path: /products
 
 Header: 
 
-    product_id: "10ba038e-48da-487b-96e8-8d3b99b6d18a"
+    product_id: 10ba038e-48da-487b-96e8-8d3b99b6d18a
+    shared_secret_key: <KEY>
 
 payload:
 
@@ -167,6 +180,7 @@ path: /products
 Header: 
 
     product_id: 10ba038e-48da-487b-96e8-8d3b99b6d18a
+    shared_secret_key: <KEY>
 
 #### Response
 
