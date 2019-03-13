@@ -12,6 +12,7 @@ describe('GET routes', () => {
         it('getting beer, its json', function(done) {   // <= No done callback
             chai.request(process.env.TEST_API_ENDPOINT)
             .get('')
+            .set('secshared_secret_key', process.env.shared_secret_key)
             .end(function(err, req) {
                 expect(req).to.be.json;
                 expect(req).to.have.status(200);
@@ -24,7 +25,7 @@ describe('GET routes', () => {
             .get('')
             .set('product_id', 156)
             .end(function(err, req) {
-                expect(req).to.have.status(404);
+                expect(req).to.have.status(401);
                 done(); // <= Test completes before this runs
             });
         });
