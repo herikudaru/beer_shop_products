@@ -23,7 +23,20 @@ describe('GET routes', () => {
         it('GET single product, expect 404', function(done) {   // <= No done callback
             chai.request(process.env.TEST_API_ENDPOINT)
             .get('')
+            .set('shared_secret_key', process.env.shared_secret_key)
             .set('product_id', 999)
+            .end(function(err, req) {
+                expect(req).to.have.status(404);
+                expect(req).to.be.json;
+                done(); // <= Test completes before this runs
+            });
+        });
+
+        it('GET single product, expect 200', function(done) {   // <= No done callback
+            chai.request(process.env.TEST_API_ENDPOINT)
+            .get('')
+            .set('shared_secret_key', process.env.shared_secret_key)
+            .set('product_id', 156)
             .end(function(err, req) {
                 expect(req).to.have.status(200);
                 expect(req).to.be.json;
