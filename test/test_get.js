@@ -14,8 +14,8 @@ describe('GET routes', () => {
             .get('')
             .set('shared_secret_key', process.env.shared_secret_key)
             .end(function(err, req) {
-                expect(req).to.be.json;
                 expect(req).to.have.status(200);
+                expect(req).to.be.json;
                 done(); // <= Test completes before this runs
             });
         });
