@@ -11,7 +11,7 @@ describe('GET routes', () => {
 
         it('GET all', function(done) {   // <= No done callback
             chai.request(process.env.TEST_API_ENDPOINT)
-            .get('/products')
+            .get('')
             .set('shared_secret_key', process.env.shared_secret_key)
             .end(function(err, req) {
                 expect(req).to.be.json;
@@ -20,15 +20,15 @@ describe('GET routes', () => {
             });
         });
 
-        it('GET single product, expect 404', function(done) {   // <= No done callback
+        /*it('GET single product, expect 404', function(done) {   // <= No done callback
             chai.request(process.env.TEST_API_ENDPOINT)
-            .get('/products')
+            .get('')
             .set('product_id', 156)
             .end(function(err, req) {
                 expect(req).to.have.status(404);
                 done(); // <= Test completes before this runs
             });
-        });
+        });*/
 
     })
 })
