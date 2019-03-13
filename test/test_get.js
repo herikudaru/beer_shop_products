@@ -14,9 +14,10 @@ describe('GET routes', () => {
             .get('')
             .set('shared_secret_key', process.env.shared_secret_key)
             .end(function(err, req) {
+                console.log('Testing log to travis');
+                console.log(req);
                 expect(req).to.have.status(200);
                 expect(req).to.be.json;
-                console.log(req);
                 done(); // <= Test completes before this runs
             });
         });
