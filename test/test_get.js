@@ -20,15 +20,16 @@ describe('GET routes', () => {
             });
         });
 
-        /*it('GET single product, expect 404', function(done) {   // <= No done callback
+        it('GET single product, expect 404', function(done) {   // <= No done callback
             chai.request(process.env.TEST_API_ENDPOINT)
             .get('')
-            .set('product_id', 156)
+            .set('product_id', 999)
             .end(function(err, req) {
-                expect(req).to.have.status(404);
+                expect(req).to.have.status(200);
+                expect(req).to.be.json;
                 done(); // <= Test completes before this runs
             });
-        });*/
+        });
 
     })
 })
