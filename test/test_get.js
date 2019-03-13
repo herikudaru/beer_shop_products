@@ -16,6 +16,7 @@ describe('GET routes', () => {
             .end(function(err, req) {
                 expect(req).to.have.status(200);
                 expect(req).to.be.json;
+                console.log(req);
                 done(); // <= Test completes before this runs
             });
         });
