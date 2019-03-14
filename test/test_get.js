@@ -10,6 +10,7 @@ describe('GET routes', () => {
     describe('index', () => {
 
         var prodId;
+        var jsonObj;
 
         it('GET all', function(done) {
             chai.request(process.env.TEST_API_ENDPOINT)
@@ -18,7 +19,8 @@ describe('GET routes', () => {
             .end(function(err, req) {
                 expect(req).to.have.status(200);
                 expect(req).to.be.json;
-                prodId = req.body[0].product_id;
+                jsonObj = JSON.parse(req.body);
+                prodId = jsonObj[0].product_id;
                 done();
             });
         });
