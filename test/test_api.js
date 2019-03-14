@@ -60,7 +60,7 @@ describe('/products', () => {
         });
     });
 
-    it('it should fail to get a single product', function(done) {
+    it('should fail to get a single product', function(done) {
         chai.request(process.env.TEST_API_ENDPOINT)
         .get('')
         .set('shared_secret_key', process.env.shared_secret_key)
@@ -72,7 +72,7 @@ describe('/products', () => {
         });
     });
 
-    it('it should get a single product', function(done) {
+    it('should get a single product', function(done) {
         chai.request(process.env.TEST_API_ENDPOINT)
         .get('')
         .set('shared_secret_key', process.env.shared_secret_key)
@@ -103,7 +103,7 @@ describe('/products', () => {
         });
     });*/
 
-    it('it should modify a product', function(done) {
+    it('should modify a product', function(done) {
         chai.request(process.env.TEST_API_ENDPOINT)
         .put('')
         .set('shared_secret_key', process.env.shared_secret_key)
@@ -121,6 +121,17 @@ describe('/products', () => {
             expect(req.body).to.have.property('description');
             expect(req.body).to.have.property('image');
             expect(req.body).to.have.property('price');
+            done();
+        });
+    });
+
+    it('should delete a product', function(done) {
+        chai.request(process.env.TEST_API_ENDPOINT)
+        .delete('')
+        .set('shared_secret_key', process.env.shared_secret_key)
+        .set('product_id', prodId)
+        .end(function(err, req) {
+            expect(req).to.have.status(200);
             done();
         });
     });
