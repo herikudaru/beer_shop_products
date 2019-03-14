@@ -84,25 +84,6 @@ describe('/products', () => {
         });
     });
 
-    /*it('it should fail to modify a product', function(done) {
-        chai.request(process.env.TEST_API_ENDPOINT)
-        .put('')
-        .set('shared_secret_key', process.env.shared_secret_key)
-        .set('product_id', prodId)
-        .send({
-            "name": "Modified beer",
-            "description": "Ale, 3.1%",
-            "image": "example.com/12_new_final_final_new.png",
-            "price": 10.99
-        }
-        )
-        .end(function(err, req) {
-            expect(req).to.have.status(502);
-            expect(req).to.be.json;
-            done();
-        });
-    });*/
-
     it('should modify a product', function(done) {
         chai.request(process.env.TEST_API_ENDPOINT)
         .put('')
