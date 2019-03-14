@@ -10,7 +10,7 @@ describe('/products', () => {
 
     var prodId;
 
-    it('should fail to reate a product', function(done) {
+    it('should fail to create a product', function(done) {
         chai.request(process.env.TEST_API_ENDPOINT)
         .post('')
         .set('shared_secret_key', 'false_header')
@@ -66,7 +66,7 @@ describe('/products', () => {
         .set('shared_secret_key', process.env.shared_secret_key)
         .set('product_id', 999)
         .end(function(err, req) {
-            expect(req).to.have.status(401);
+            expect(req).to.have.status(404);
             expect(req).to.be.json;
             done();
         });
