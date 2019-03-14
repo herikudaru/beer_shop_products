@@ -19,8 +19,9 @@ describe('GET routes', () => {
             .end(function(err, req) {
                 expect(req).to.have.status(200);
                 expect(req).to.be.json;
-                jsonObj = JSON.parse(req.body);
-                prodId = jsonObj[0].id;
+                //jsonObj = JSON.parse(req);
+                //prodId = jsonObj[0].id;
+                prodId = req.body[0].id;
                 done();
             });
         });
