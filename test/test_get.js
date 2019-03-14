@@ -18,6 +18,7 @@ describe('GET routes', () => {
             .end(function(err, req) {
                 expect(req).to.have.status(200);
                 expect(req).to.be.json;
+                prodId = req.body[0].product_id;
                 done();
             });
         });
@@ -38,7 +39,7 @@ describe('GET routes', () => {
             chai.request(process.env.TEST_API_ENDPOINT)
             .get('')
             .set('shared_secret_key', process.env.shared_secret_key)
-            .set('product_id', 156)
+            .set('product_id', prodId)
             .end(function(err, req) {
                 expect(req).to.have.status(200);
                 expect(req).to.be.json;
