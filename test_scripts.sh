@@ -1,1 +1,1 @@
-mocha ./test/test_get.js
+mocha ./test/test_api.js
