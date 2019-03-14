@@ -84,7 +84,7 @@ describe('/products', () => {
         });
     });
 
-    it('it should fail to modify a product', function(done) {
+    /*it('it should fail to modify a product', function(done) {
         chai.request(process.env.TEST_API_ENDPOINT)
         .put('')
         .set('shared_secret_key', process.env.shared_secret_key)
@@ -101,7 +101,7 @@ describe('/products', () => {
             expect(req).to.be.json;
             done();
         });
-    });
+    });*/
 
     it('it should modify a product', function(done) {
         chai.request(process.env.TEST_API_ENDPOINT)
