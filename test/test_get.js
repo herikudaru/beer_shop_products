@@ -29,7 +29,7 @@ describe('GET routes', () => {
             .set('shared_secret_key', process.env.shared_secret_key)
             .set('product_id', 999)
             .end(function(err, req) {
-                expect(req).to.have.status(404);
+                expect(req).to.have.status(401);
                 expect(req).to.be.json;
                 done();
             });
