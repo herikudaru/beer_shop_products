@@ -10,14 +10,13 @@ describe('GET routes', () => {
     describe('index', () => {
 
         var prodId;
-        var jsonObj;
 
         it('GET all', function(done) {
             chai.request(process.env.TEST_API_ENDPOINT)
             .get('')
             .set('shared_secret_key', process.env.shared_secret_key)
             .end(function(err, req) {
-                expect(req).to.have.status(123);
+                expect(req).to.have.status(200);
                 expect(req).to.be.json;
                 prodId = req.body[0].id;
                 done();
