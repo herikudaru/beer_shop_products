@@ -17,10 +17,8 @@ describe('GET routes', () => {
             .get('')
             .set('shared_secret_key', process.env.shared_secret_key)
             .end(function(err, req) {
-                expect(req).to.have.status(200);
+                expect(req).to.have.status(123);
                 expect(req).to.be.json;
-                //jsonObj = JSON.parse(req);
-                //prodId = jsonObj[0].id;
                 prodId = req.body[0].id;
                 done();
             });

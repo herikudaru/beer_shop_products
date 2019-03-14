@@ -19,7 +19,7 @@ describe('CREATE routes', () => {
                 "price": 9.99
             })
             .end(function(err, req) {
-                expect(req).to.have.status(400);
+                expect(req).to.have.status(401);
                 expect(req).to.be.json;
                 done();
             });
