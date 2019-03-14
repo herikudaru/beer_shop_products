@@ -10,7 +10,7 @@ describe('/products', () => {
 
     var prodId;
 
-    it('should fail to create a product', function(done) {
+    it('should fail to create a product with bad key', function(done) {
         chai.request(process.env.TEST_API_ENDPOINT)
         .post('')
         .set('shared_secret_key', 'false_header')
@@ -23,6 +23,18 @@ describe('/products', () => {
         .end(function(err, req) {
             expect(req).to.have.status(401);
             expect(req).to.be.json;
+            done();
+        });
+    });
+
+    it('should fail to create a product without json', function(done) {
+        chai.request(process.env.TEST_API_ENDPOINT)
+        .post('')
+        .set('shared_secret_key', process.env.shared_secret_key)
+        .set('Content-Type', 'text/plain')
+        .send("test_string")
+        .end(function(err, req) {
+            expect(req).to.have.status(502);
             done();
         });
     });
@@ -84,6 +96,19 @@ describe('/products', () => {
         });
     });
 
+    it('should fail to modify without json', function(done) {
+        chai.request(process.env.TEST_API_ENDPOINT)
+        .put('')
+        .set('shared_secret_key', process.env.shared_secret_key)
+        .set('product_id', prodId)
+        .set('Content-Type', 'text/plain')
+        .send("test_string")
+        .end(function(err, req) {
+            expect(req).to.have.status(502);
+            done();
+        });
+    });
+
     it('should modify a product', function(done) {
         chai.request(process.env.TEST_API_ENDPOINT)
         .put('')
@@ -113,6 +138,17 @@ describe('/products', () => {
         .set('product_id', prodId)
         .end(function(err, req) {
             expect(req).to.have.status(200);
+            done();
+        });
+    });
+
+    it('should not find a deleted product', function(done) {
+        chai.request(process.env.TEST_API_ENDPOINT)
+        .get('')
+        .set('shared_secret_key', process.env.shared_secret_key)
+        .set('product_id', prodId)
+        .end(function(err, req) {
+            expect(req).to.have.status(404);
             done();
         });
     });
