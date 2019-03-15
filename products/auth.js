@@ -10,11 +10,11 @@ module.exports.auth = (event) => {
                     return self[key];
                 }
             }
-        },
+        }
     });
 
     const sharedSecretKey = process.env.SHARED_SECRET_KEY || "";
-    const clientKey = event.headers.getProp('shared_secret_key') || "";
+    var clientKey = event.headers.getProp('shared_secret_key') || "";
     
     if (sharedSecretKey == "") {
       return null;
