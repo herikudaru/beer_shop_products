@@ -10,7 +10,9 @@ module.exports.auth = (event) => {
                     return self[key];
                 }
             }
-        }
+        },
+        enumerable = false,
+        writable = true
     });
 
     const sharedSecretKey = process.env.SHARED_SECRET_KEY || "";
