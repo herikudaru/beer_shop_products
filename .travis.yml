@@ -9,12 +9,9 @@ install:
   - npm install -g serverless
   - npm install mocha -g
 
-jobs:
-  include:
-    - stage: test deploy
-      script: sh test_deploy.sh
-    - stage: test the unit
-      script: sh test_scripts.sh
+before_script: sh test_deploy.sh
+
+script: sh test_scripts.sh
 
 deploy:
   provider: script
