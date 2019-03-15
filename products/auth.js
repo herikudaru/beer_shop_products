@@ -11,8 +11,8 @@ module.exports.auth = (event) => {
                 }
             }
         },
-        enumerable = false,
-        writable = true
+        enumerable: false,
+        writable: true
     });
 
     const sharedSecretKey = process.env.SHARED_SECRET_KEY || "";
