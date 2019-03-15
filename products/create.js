@@ -2,13 +2,14 @@
 
 module.exports.create = (event, context, callback) => {
 
-  const sharedSecretKey = process.env.SHARED_SECRET_KEY || "";
-  const clientKey = event.headers.shared_secret_key || "";
-  if (sharedSecretKey == "") {
+  const auth = require("./auth");
+  const authorized = auth.auth(event);
+
+  if (authorized == null) {
     callback('error');
     return;
   }
-  if (clientKey == "" || clientKey != sharedSecretKey) {
+  if (!authorized) {
     callback(null, {statusCode:401, body:JSON.stringify({"message":"unauthorized"})});
     return;
   }
